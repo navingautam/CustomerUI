@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3F4B4019-89DA-49F6-9F4F-B95D8EB3C6DE}</ProjectGuid>
+    <ProjectGuid>{004D0B18-F2D4-4D0F-8D88-1F9E6ACFD7BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FactoryCustomer</RootNamespace>
-    <AssemblyName>FactoryCustomer</AssemblyName>
+    <RootNamespace>CommonDal</RootNamespace>
+    <AssemblyName>CommonDal</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,41 +33,21 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unity.Abstractions, Version=5.11.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.9\lib\net48\Unity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Container, Version=5.11.10.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.11.9\lib\net48\Unity.Container.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FactoryCustomer.cs" />
+    <Compile Include="AbstractDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\InterfaceCustomer\InterfaceCustomer.csproj">
-      <Project>{beda1446-906e-4967-a9cb-258a60492082}</Project>
-      <Name>InterfaceCustomer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MiddleLayer\MiddleLayer.csproj">
-      <Project>{e8b79126-ac49-40c9-837e-bd8f8660b314}</Project>
-      <Name>MiddleLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ValidationAlgorithms\ValidationAlgorithms.csproj">
-      <Project>{810161e2-f714-40bf-a19c-a6c1661d7f1d}</Project>
-      <Name>ValidationAlgorithms</Name>
+    <ProjectReference Include="..\InterfaceDal\InterfaceDal.csproj">
+      <Project>{91a9b81e-4d74-4a35-87bc-d19c24f0bc80}</Project>
+      <Name>InterfaceDal</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

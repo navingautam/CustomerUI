@@ -41,8 +41,11 @@
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.btnValidate = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dtgGridCustomer = new System.Windows.Forms.DataGridView();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.cmbDalLayer = new System.Windows.Forms.ComboBox();
+            this.lblDal = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgGridCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCustomerType
@@ -159,21 +162,51 @@
             this.btnValidate.UseVisualStyleBackColor = true;
             this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);
             // 
-            // dataGridView1
+            // dtgGridCustomer
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 313);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1370, 368);
-            this.dataGridView1.TabIndex = 13;
+            this.dtgGridCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgGridCustomer.Location = new System.Drawing.Point(12, 313);
+            this.dtgGridCustomer.Name = "dtgGridCustomer";
+            this.dtgGridCustomer.RowTemplate.Height = 24;
+            this.dtgGridCustomer.Size = new System.Drawing.Size(1370, 368);
+            this.dtgGridCustomer.TabIndex = 13;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(217, 230);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(130, 45);
+            this.btnAdd.TabIndex = 14;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // cmbDalLayer
+            // 
+            this.cmbDalLayer.FormattingEnabled = true;
+            this.cmbDalLayer.Location = new System.Drawing.Point(921, 28);
+            this.cmbDalLayer.Name = "cmbDalLayer";
+            this.cmbDalLayer.Size = new System.Drawing.Size(121, 24);
+            this.cmbDalLayer.TabIndex = 15;
+            // 
+            // lblDal
+            // 
+            this.lblDal.AutoSize = true;
+            this.lblDal.Location = new System.Drawing.Point(880, 31);
+            this.lblDal.Name = "lblDal";
+            this.lblDal.Size = new System.Drawing.Size(35, 17);
+            this.lblDal.TabIndex = 16;
+            this.lblDal.Text = "DAL";
             // 
             // FrmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1394, 693);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblDal);
+            this.Controls.Add(this.cmbDalLayer);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.dtgGridCustomer);
             this.Controls.Add(this.btnValidate);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.lblAddress);
@@ -189,7 +222,8 @@
             this.Controls.Add(this.lblCustomerType);
             this.Name = "FrmCustomer";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FrmCustomer_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgGridCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,7 +244,10 @@
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Button btnValidate;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgGridCustomer;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ComboBox cmbDalLayer;
+        private System.Windows.Forms.Label lblDal;
     }
 }
 
