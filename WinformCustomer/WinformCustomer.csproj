@@ -84,9 +84,9 @@
       <Project>{3f4b4019-89da-49f6-9f4f-b95d8eb3c6de}</Project>
       <Name>FactoryCustomer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MiddleLayer\MiddleLayer.csproj">
-      <Project>{e8b79126-ac49-40c9-837e-bd8f8660b314}</Project>
-      <Name>MiddleLayer</Name>
+    <ProjectReference Include="..\InterfaceCustomer\InterfaceCustomer.csproj">
+      <Project>{beda1446-906e-4967-a9cb-258a60492082}</Project>
+      <Name>InterfaceCustomer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

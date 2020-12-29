@@ -113,6 +113,7 @@
             this.txtBillAmount.Name = "txtBillAmount";
             this.txtBillAmount.Size = new System.Drawing.Size(192, 22);
             this.txtBillAmount.TabIndex = 7;
+            this.txtBillAmount.Text = "0";
             // 
             // lblBillDate
             // 
@@ -129,6 +130,7 @@
             this.txtBillDate.Name = "txtBillDate";
             this.txtBillDate.Size = new System.Drawing.Size(212, 22);
             this.txtBillDate.TabIndex = 9;
+            this.txtBillDate.Text = "1/1/2020";
             // 
             // lblAddress
             // 

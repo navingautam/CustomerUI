@@ -44,5 +44,11 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfaceCustomer\InterfaceCustomer.csproj">
+      <Project>{beda1446-906e-4967-a9cb-258a60492082}</Project>
+      <Name>InterfaceCustomer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
