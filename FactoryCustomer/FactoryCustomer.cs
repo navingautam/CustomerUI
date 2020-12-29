@@ -9,27 +9,26 @@ using InterfaceCustomer;
 using ValidationAlgorithms;
 using Unity.Injection;
 
+
 namespace FactoryCustomer
 {
-    public static class Factory // Design Pattern: Simple Factory pattern
+    public static class FactoryCustomer<AnyType> // Design Pattern: Simple Factory pattern
     {
-        private static IUnityContainer custs = null;
+        private static IUnityContainer objectsOfOurProjects = null;
        
-        public static ICustomer Create(string TypeCust)
+        public static AnyType Create(string Type)
         {
             // Design Pattern: Lazy Loading. Opposite is Eager Loading
-            if (custs == null)
+            if (objectsOfOurProjects == null)
             {
-                custs = new UnityContainer();
-                custs.RegisterType<ICustomer, Customer>
+                objectsOfOurProjects = new UnityContainer();
+                objectsOfOurProjects.RegisterType<ICustomer, Customer>
                     ("Customer", new InjectionConstructor(new CustomerValidationAll()));
-                custs.RegisterType<ICustomer, Lead>
+                objectsOfOurProjects.RegisterType<ICustomer, Lead>
                     ("Lead", new InjectionConstructor(new LeadValidation()));
             }
             // Design Pattern: RIP Replace If with Polymorphism
-            return custs.Resolve<ICustomer>(TypeCust);
-
-         
+            return objectsOfOurProjects.Resolve<AnyType>(Type);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using FactoryCustomer;
+using FactoryDal;
 using InterfaceCustomer;
+using InterfaceDal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +24,7 @@ namespace WinformCustomer
 
         private void cmbCustomerType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cust = Factory.Create(cmbCustomerType.Text);
+            cust = FactoryCustomer<ICustomer>.Create(cmbCustomerType.Text);
         }
 
         private void SetCustomer()
@@ -45,6 +47,27 @@ namespace WinformCustomer
 
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            SetCustomer();
+            IDal<ICustomer> dal = FactoryDal<IDal<ICustomer>>.Create("ADODal");
+            dal.Add(cust); // In memory
+            dal.Save(); // Physical commit
+        }
+
+        private void FrmCustomer_Load(object sender, EventArgs e)
+        {
+            cmbDalLayer.Items.Add("ADODal");
+            cmbDalLayer.Items.Add("EFDal");
+            LoadGrid();
+        }
+        private void LoadGrid()
+        {
+            IDal<ICustomer> dal = FactoryDal<IDal<ICustomer>>.Create("ADODal");
+            List<ICustomer> custs = dal.Search();
+            dtgGridCustomer.DataSource = custs;
         }
     }
 }
