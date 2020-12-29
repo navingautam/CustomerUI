@@ -1,5 +1,5 @@
 ﻿using FactoryCustomer;
-using MiddleLayer;
+using InterfaceCustomer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ namespace WinformCustomer
 {
     public partial class FrmCustomer : Form
     {
-        private CustomerBase cust = null;
+        private ICustomer cust = null;
         public FrmCustomer()
         {
             InitializeComponent();
