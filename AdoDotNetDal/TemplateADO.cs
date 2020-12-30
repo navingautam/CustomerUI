@@ -64,22 +64,24 @@ namespace AdoDotNetDal
         }
     }
 
-    public class CustomerDAL : TemplateADO<ICustomer>, IDal<ICustomer>
+    public class CustomerDAL : TemplateADO<CustomerBase>, IDal<CustomerBase>
     {
         public CustomerDAL(string connectionString)
             : base(connectionString)
         {
 
         }
-        protected override List<ICustomer> ExecuteCommand()
+        protected override List<CustomerBase> ExecuteCommand()
         {
             objCommand.CommandText = "SELECT * FROM tblCustomer";
             SqlDataReader dr = null;
             dr = objCommand.ExecuteReader();
-            List<ICustomer> custs = new List<ICustomer>();
+            List<CustomerBase> custs = new List<CustomerBase>();
             while (dr.Read())
             {
-                ICustomer iCust = FactoryCustomer<ICustomer>.Create("Customer");
+                CustomerBase iCust = FactoryCustomer<CustomerBase>.Create("Customer");
+                iCust.Id = Convert.ToInt16(dr["Id"]);
+                iCust.CustomerType = dr["CustomerType"].ToString();
                 iCust.CustomerName = dr["CustomerName"].ToString();
                 iCust.BillDate = Convert.ToDateTime(dr["BillDate"]);
                 iCust.BillAmount = Convert.ToDecimal(dr["BillAmount"]);
@@ -89,11 +91,12 @@ namespace AdoDotNetDal
             }
             return custs;
         }
-        protected override void ExecuteCommand(ICustomer obj)
+        protected override void ExecuteCommand(CustomerBase obj)
         {
             objCommand.CommandText = "INSERT INTO tblCustomer(" +
-                "CustomerName, BillAmount, BillDate, PhoneNumber, Address) " +
-                "VALUES('" + obj.CustomerName + "', '" +
+                "CustomerType, CustomerName, BillAmount, BillDate, PhoneNumber, Address) " +
+                "VALUES('" + obj.CustomerType + "', '" +
+                obj.CustomerName + "', '" +
                 obj.BillAmount + "', '" +
                 obj.BillDate + "', '" +
                 obj.PhoneNumber + "', '" +

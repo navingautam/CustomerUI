@@ -188,6 +188,7 @@
             this.cmbDalLayer.Name = "cmbDalLayer";
             this.cmbDalLayer.Size = new System.Drawing.Size(121, 24);
             this.cmbDalLayer.TabIndex = 15;
+            this.cmbDalLayer.SelectedIndexChanged += new System.EventHandler(this.cmbDalLayer_SelectedIndexChanged);
             // 
             // lblDal
             // 

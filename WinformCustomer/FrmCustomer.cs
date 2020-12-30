@@ -16,7 +16,7 @@ namespace WinformCustomer
 {
     public partial class FrmCustomer : Form
     {
-        private ICustomer cust = null;
+        private CustomerBase cust = null;
         public FrmCustomer()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace WinformCustomer
 
         private void cmbCustomerType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cust = FactoryCustomer<ICustomer>.Create(cmbCustomerType.Text);
+            cust = FactoryCustomer<CustomerBase>.Create(cmbCustomerType.Text);
         }
 
         private void SetCustomer()
@@ -52,22 +52,32 @@ namespace WinformCustomer
         private void btnAdd_Click(object sender, EventArgs e)
         {
             SetCustomer();
-            IDal<ICustomer> dal = FactoryDal<IDal<ICustomer>>.Create("ADODal");
+            IDal<CustomerBase> dal = FactoryDal<IDal<CustomerBase>>.Create(cmbDalLayer.SelectedItem.ToString());
             dal.Add(cust); // In memory
             dal.Save(); // Physical commit
+            LoadGrid();
         }
 
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
             cmbDalLayer.Items.Add("ADODal");
             cmbDalLayer.Items.Add("EFDal");
-            LoadGrid();
+
+            cmbDalLayer.SelectedIndex = 0;
+
+            //LoadGrid();
         }
         private void LoadGrid()
         {
-            IDal<ICustomer> dal = FactoryDal<IDal<ICustomer>>.Create("ADODal");
-            List<ICustomer> custs = dal.Search();
+            IDal<CustomerBase> dal = FactoryDal<IDal<CustomerBase>>.Create(cmbDalLayer.SelectedItem.ToString());
+            
+            List<CustomerBase> custs = dal.Search();
             dtgGridCustomer.DataSource = custs;
+        }
+
+        private void cmbDalLayer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid();
         }
     }
 }
