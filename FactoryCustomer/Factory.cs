@@ -21,14 +21,36 @@ namespace FactoryCustomer
             if (ObjectsofOurProjects == null)
             {
                 ObjectsofOurProjects = new UnityContainer();
+
+                IValidation<ICustomer> custValidation = new PhoneValidation(
+                    new CustomerBasicValidation());
                 ObjectsofOurProjects.RegisterType<CustomerBase, Customer>
-                                ("Customer",
-                                new InjectionConstructor(
-                                    new CustomerValidationAll()));
-                ObjectsofOurProjects.RegisterType<CustomerBase, Lead>
                                     ("Lead"
                                     , new InjectionConstructor(
-                                        new LeadValidation()));
+                                        custValidation, "Lead"));
+
+                custValidation = new CustomerBasicValidation();
+                ObjectsofOurProjects.RegisterType<CustomerBase, Customer>
+                                    ("SelfService"
+                                    , new InjectionConstructor(
+                                        custValidation, "SelfService"));
+
+                custValidation = new CustomerAddressValidation(
+                    new CustomerBasicValidation());
+                ObjectsofOurProjects.RegisterType<CustomerBase, Customer>
+                                    ("HomeDelivery"
+                                    , new InjectionConstructor(
+                                        custValidation, "HomeDelivery"));
+
+                custValidation = new PhoneValidation(
+                    new CustomerBillValidation(
+                        new CustomerAddressValidation(
+                            new CustomerBasicValidation())));
+                ObjectsofOurProjects.RegisterType<CustomerBase, Customer>
+                                    ("Customer"
+                                    , new InjectionConstructor(
+                                        custValidation, "Customer"));
+
 
             }
             //Design pattern :-  RIP Replace If with Poly

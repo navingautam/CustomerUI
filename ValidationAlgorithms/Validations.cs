@@ -5,45 +5,78 @@ using System.Text;
 using InterfaceCustomer;
 namespace ValidationAlgorithms
 {
-    public class CustomerValidationAll : IValidation<ICustomer>
+    public class CustomerBasicValidation : IValidation<ICustomer>
     {
-
         public void Validate(ICustomer obj)
         {
-            if (obj.CustomerName.Length == 0)
+            if(obj.CustomerName.Length == 0)
             {
                 throw new Exception("Customer Name is required");
-            }
-            if (obj.PhoneNumber.Length == 0)
-            {
-                throw new Exception("Phone number is required");
-            }
-            if (obj.BillAmount == 0)
-            {
-                throw new Exception("Bill Amount is required");
-            }
-            if (obj.BillDate >= DateTime.Now)
-            {
-                throw new Exception("Bill date  is not proper");
-            }
-            if (obj.Address.Length == 0)
-            {
-                throw new Exception("Address required");
             }
         }
     }
-    public class LeadValidation : IValidation<ICustomer>
+    // Design pattern :- Decorator pattern
+    public class ValidationLinker : IValidation<ICustomer>
     {
-
-        public void Validate(ICustomer obj)
+        private IValidation<ICustomer> nextValidator = null;
+        public ValidationLinker(IValidation<ICustomer> IValidation)
         {
-            if (obj.CustomerName.Length == 0)
+            nextValidator = IValidation;
+        }
+        public virtual void Validate(ICustomer obj)
+        {
+            nextValidator.Validate(obj);
+        }
+    }
+    public class PhoneValidation : ValidationLinker
+    {
+        public PhoneValidation(IValidation<ICustomer> custValidate)
+            :base(custValidate)
+        {
+
+        }
+        public override void Validate(ICustomer obj)
+        {
+            base.Validate(obj); // This will call the top of the cake
+            if(obj.PhoneNumber.Length == 0)
             {
-                throw new Exception("Customer Name is required");
+                throw new Exception("Phone number is compulsory");
             }
-            if (obj.PhoneNumber.Length == 0)
+        }
+    }
+    public class CustomerBillValidation : ValidationLinker
+    {
+        public CustomerBillValidation(IValidation<ICustomer> custValidate)
+            :base(custValidate)
+        {
+
+        }
+        public override void Validate(ICustomer obj)
+        {
+            base.Validate(obj);
+            if(obj.BillAmount <= 0)
             {
-                throw new Exception("Phone number is required");
+                throw new Exception("Bill amount is compulsory");
+            }
+            if (obj.BillDate >= DateTime.Now)
+            {
+                throw new Exception("Bill date is not proper");
+            }
+        }
+    }
+    public class CustomerAddressValidation : ValidationLinker
+    {
+        public CustomerAddressValidation(IValidation<ICustomer> custValidate)
+            :base(custValidate)
+        {
+
+        }
+        public override void Validate(ICustomer obj)
+        {
+            base.Validate(obj);
+            if(obj.Address.Length == 0)
+            {
+                throw new Exception("Address is compulsory");
             }
         }
     }

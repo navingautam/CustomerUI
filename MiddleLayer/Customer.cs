@@ -8,25 +8,11 @@ namespace MiddleLayer
 
     public class Customer : CustomerBase
     {
-        public Customer()
+        public Customer(IValidation<ICustomer> obj, string _custType) : base(obj)
         {
-            CustomerType = "Customer";
-        }
-        public Customer(IValidation<ICustomer> obj) : base(obj)
-        {
-            CustomerType = "Customer";
+            CustomerType = _custType;
         }
 
     }
-    public class Lead : CustomerBase
-    {
-        public Lead()
-        {
-            CustomerType = "Lead";
-        }
-        public Lead(IValidation<ICustomer> obj) : base(obj)
-        {
-            CustomerType = "Lead";
-        }
-    }
+    
 }
