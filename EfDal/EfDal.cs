@@ -1,55 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using InterfaceCustomer;
 using InterfaceDal;
+using System.Data.Entity;
+using InterfaceCustomer;
+using System.Data.Entity.Infrastructure;
 
 namespace EfDal
 {
-    // Design Pattern: Adapter Pattern (Class Adapter Pattern)
-    public class EfDalAbstract<AnyType> : DbContext, IDal<AnyType>
+    // Design pattern :- Adpater pattern ( class Adapter pattern)
+    public class EfDalAbstract<AnyType> : IRepository<AnyType>
         where AnyType : class
     {
+        DbContext dbcont = null;
         public EfDalAbstract()
-            : base("name=EFContext")
         {
-
+            dbcont = new EUow(); // Self contained transaction
         }
-        
         public void Add(AnyType obj)
         {
-            Set<AnyType>().Add(obj); // in memory commit
+            dbcont.Set<AnyType>().Add(obj); // in memory committ
         }
 
         public void Save()
         {
-            SaveChanges(); // Physical commit
+            dbcont.SaveChanges(); //physical committ
         }
-
-        public List<AnyType> Search()
-        {
-            return Set<AnyType>().
-                AsQueryable<AnyType>().
-                ToList<AnyType>();
-        }
-
         public void Update(AnyType obj)
         {
             throw new NotImplementedException();
         }
+
+        public List<AnyType> Search()
+        {
+            return dbcont.Set<AnyType>().
+                     AsQueryable<AnyType>().
+                         ToList<AnyType>();
+        }
+
+
+
+        public void SetUnitWork(IUow uow)
+        {
+            dbcont = ((EUow)uow); // Global transaction UOW
+        }
     }
 
-    public class EfCustomerDal : EfDalAbstract<CustomerBase>
+
+
+
+    public class EUow : DbContext, IUow
     {
-        // mapping
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // Mapping code
             modelBuilder.Entity<CustomerBase>()
-                .ToTable("tblCustomer");
+                       .ToTable("tblCustomer");
+        }
+        public EUow() : base("name=Conn")
+        {
+
+        }
+        public void Committ()
+        {
+            SaveChanges();
+        }
+
+        public void RollBack() // Adapter
+        {
+            Dispose();
         }
     }
 }
