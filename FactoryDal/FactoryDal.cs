@@ -9,6 +9,7 @@ using Unity.Injection;
 using InterfaceDal;
 using Unity.Resolution;
 using AdoDotNetDal;
+using EfDal;
 
 namespace FactoryDal
 {
@@ -23,7 +24,8 @@ namespace FactoryDal
             {
                 objectsOfOurProjects = new UnityContainer();
                
-                objectsOfOurProjects.RegisterType<IDal<ICustomer>, CustomerDAL>("ADODal");
+                objectsOfOurProjects.RegisterType<IDal<CustomerBase>, CustomerDAL>("ADODal");
+                objectsOfOurProjects.RegisterType<IDal<CustomerBase>, EfCustomerDal>("EFDal");
             }
             // Design Pattern: RIP Replace If with Polymorphism
             return objectsOfOurProjects.Resolve<AnyType>(Type,
