@@ -28,136 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblCustomerType = new System.Windows.Forms.Label();
-            this.cmbCustomerType = new System.Windows.Forms.ComboBox();
-            this.lblCustomerName = new System.Windows.Forms.Label();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.lblPhoneNumber = new System.Windows.Forms.Label();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.lblBillAmount = new System.Windows.Forms.Label();
-            this.txtBillAmount = new System.Windows.Forms.TextBox();
-            this.lblBillDate = new System.Windows.Forms.Label();
-            this.txtBillDate = new System.Windows.Forms.TextBox();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.btnValidate = new System.Windows.Forms.Button();
             this.dtgGridCustomer = new System.Windows.Forms.DataGridView();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBillingDate = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBillingAmount = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbCustomerType = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.cmbDalLayer = new System.Windows.Forms.ComboBox();
-            this.lblDal = new System.Windows.Forms.Label();
+            this.DalLayer = new System.Windows.Forms.ComboBox();
+            this.btnUOW = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgGridCustomer)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblCustomerType
-            // 
-            this.lblCustomerType.AutoSize = true;
-            this.lblCustomerType.Location = new System.Drawing.Point(28, 26);
-            this.lblCustomerType.Name = "lblCustomerType";
-            this.lblCustomerType.Size = new System.Drawing.Size(104, 17);
-            this.lblCustomerType.TabIndex = 0;
-            this.lblCustomerType.Text = "Customer Type";
-            // 
-            // cmbCustomerType
-            // 
-            this.cmbCustomerType.FormattingEnabled = true;
-            this.cmbCustomerType.Items.AddRange(new object[] {
-            "Customer",
-            "Lead"});
-            this.cmbCustomerType.Location = new System.Drawing.Point(147, 26);
-            this.cmbCustomerType.Name = "cmbCustomerType";
-            this.cmbCustomerType.Size = new System.Drawing.Size(187, 24);
-            this.cmbCustomerType.TabIndex = 1;
-            this.cmbCustomerType.SelectedIndexChanged += new System.EventHandler(this.cmbCustomerType_SelectedIndexChanged);
-            // 
-            // lblCustomerName
-            // 
-            this.lblCustomerName.AutoSize = true;
-            this.lblCustomerName.Location = new System.Drawing.Point(28, 81);
-            this.lblCustomerName.Name = "lblCustomerName";
-            this.lblCustomerName.Size = new System.Drawing.Size(105, 17);
-            this.lblCustomerName.TabIndex = 2;
-            this.lblCustomerName.Text = "CustomerName";
-            // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.Location = new System.Drawing.Point(147, 81);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(292, 22);
-            this.txtCustomerName.TabIndex = 3;
-            // 
-            // lblPhoneNumber
-            // 
-            this.lblPhoneNumber.AutoSize = true;
-            this.lblPhoneNumber.Location = new System.Drawing.Point(28, 145);
-            this.lblPhoneNumber.Name = "lblPhoneNumber";
-            this.lblPhoneNumber.Size = new System.Drawing.Size(103, 17);
-            this.lblPhoneNumber.TabIndex = 4;
-            this.lblPhoneNumber.Text = "Phone Number";
-            // 
-            // txtPhoneNumber
-            // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(147, 145);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(226, 22);
-            this.txtPhoneNumber.TabIndex = 5;
-            // 
-            // lblBillAmount
-            // 
-            this.lblBillAmount.AutoSize = true;
-            this.lblBillAmount.Location = new System.Drawing.Point(534, 26);
-            this.lblBillAmount.Name = "lblBillAmount";
-            this.lblBillAmount.Size = new System.Drawing.Size(78, 17);
-            this.lblBillAmount.TabIndex = 6;
-            this.lblBillAmount.Text = "Bill Amount";
-            // 
-            // txtBillAmount
-            // 
-            this.txtBillAmount.Location = new System.Drawing.Point(618, 28);
-            this.txtBillAmount.Name = "txtBillAmount";
-            this.txtBillAmount.Size = new System.Drawing.Size(192, 22);
-            this.txtBillAmount.TabIndex = 7;
-            this.txtBillAmount.Text = "0";
-            // 
-            // lblBillDate
-            // 
-            this.lblBillDate.AutoSize = true;
-            this.lblBillDate.Location = new System.Drawing.Point(534, 81);
-            this.lblBillDate.Name = "lblBillDate";
-            this.lblBillDate.Size = new System.Drawing.Size(60, 17);
-            this.lblBillDate.TabIndex = 8;
-            this.lblBillDate.Text = "Bill Date";
-            // 
-            // txtBillDate
-            // 
-            this.txtBillDate.Location = new System.Drawing.Point(618, 81);
-            this.txtBillDate.Name = "txtBillDate";
-            this.txtBillDate.Size = new System.Drawing.Size(212, 22);
-            this.txtBillDate.TabIndex = 9;
-            this.txtBillDate.Text = "1/1/2020";
-            // 
-            // lblAddress
-            // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(534, 145);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(60, 17);
-            this.lblAddress.TabIndex = 10;
-            this.lblAddress.Text = "Address";
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(618, 145);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(424, 130);
-            this.txtAddress.TabIndex = 11;
-            // 
             // btnValidate
             // 
-            this.btnValidate.Location = new System.Drawing.Point(31, 230);
+            this.btnValidate.Location = new System.Drawing.Point(17, 93);
+            this.btnValidate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnValidate.Name = "btnValidate";
-            this.btnValidate.Size = new System.Drawing.Size(158, 45);
-            this.btnValidate.TabIndex = 12;
+            this.btnValidate.Size = new System.Drawing.Size(98, 28);
+            this.btnValidate.TabIndex = 37;
             this.btnValidate.Text = "Validate";
             this.btnValidate.UseVisualStyleBackColor = true;
             this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);
@@ -165,62 +62,183 @@
             // dtgGridCustomer
             // 
             this.dtgGridCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgGridCustomer.Location = new System.Drawing.Point(12, 313);
+            this.dtgGridCustomer.Location = new System.Drawing.Point(17, 131);
+            this.dtgGridCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtgGridCustomer.Name = "dtgGridCustomer";
             this.dtgGridCustomer.RowTemplate.Height = 24;
-            this.dtgGridCustomer.Size = new System.Drawing.Size(1370, 368);
-            this.dtgGridCustomer.TabIndex = 13;
+            this.dtgGridCustomer.Size = new System.Drawing.Size(586, 203);
+            this.dtgGridCustomer.TabIndex = 32;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(295, 67);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(153, 55);
+            this.txtAddress.TabIndex = 27;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(232, 67);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Address";
+            // 
+            // txtBillingDate
+            // 
+            this.txtBillingDate.Location = new System.Drawing.Point(295, 39);
+            this.txtBillingDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBillingDate.Name = "txtBillingDate";
+            this.txtBillingDate.Size = new System.Drawing.Size(110, 20);
+            this.txtBillingDate.TabIndex = 25;
+            this.txtBillingDate.Text = "1/1/2010";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(232, 39);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Bill Date";
+            // 
+            // txtBillingAmount
+            // 
+            this.txtBillingAmount.Location = new System.Drawing.Point(295, 11);
+            this.txtBillingAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBillingAmount.Name = "txtBillingAmount";
+            this.txtBillingAmount.Size = new System.Drawing.Size(110, 20);
+            this.txtBillingAmount.TabIndex = 22;
+            this.txtBillingAmount.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(232, 11);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Bill Amount";
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Location = new System.Drawing.Point(110, 67);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(110, 20);
+            this.txtPhoneNumber.TabIndex = 26;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 67);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Phone number";
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Location = new System.Drawing.Point(110, 39);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(110, 20);
+            this.txtCustomerName.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Customer Name";
+            // 
+            // cmbCustomerType
+            // 
+            this.cmbCustomerType.FormattingEnabled = true;
+            this.cmbCustomerType.Items.AddRange(new object[] {
+            "Lead",
+            "Customer"});
+            this.cmbCustomerType.Location = new System.Drawing.Point(110, 9);
+            this.cmbCustomerType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbCustomerType.Name = "cmbCustomerType";
+            this.cmbCustomerType.Size = new System.Drawing.Size(110, 21);
+            this.cmbCustomerType.TabIndex = 20;
+            this.cmbCustomerType.SelectedIndexChanged += new System.EventHandler(this.cmbCustomerType_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Customer Type";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(217, 230);
+            this.btnAdd.Location = new System.Drawing.Point(130, 93);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(130, 45);
-            this.btnAdd.TabIndex = 14;
+            this.btnAdd.Size = new System.Drawing.Size(76, 28);
+            this.btnAdd.TabIndex = 38;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // cmbDalLayer
+            // DalLayer
             // 
-            this.cmbDalLayer.FormattingEnabled = true;
-            this.cmbDalLayer.Location = new System.Drawing.Point(921, 28);
-            this.cmbDalLayer.Name = "cmbDalLayer";
-            this.cmbDalLayer.Size = new System.Drawing.Size(121, 24);
-            this.cmbDalLayer.TabIndex = 15;
-            this.cmbDalLayer.SelectedIndexChanged += new System.EventHandler(this.cmbDalLayer_SelectedIndexChanged);
+            this.DalLayer.FormattingEnabled = true;
+            this.DalLayer.Location = new System.Drawing.Point(426, 11);
+            this.DalLayer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DalLayer.Name = "DalLayer";
+            this.DalLayer.Size = new System.Drawing.Size(110, 21);
+            this.DalLayer.TabIndex = 39;
+            this.DalLayer.SelectedIndexChanged += new System.EventHandler(this.DalLayer_SelectedIndexChanged);
             // 
-            // lblDal
+            // btnUOW
             // 
-            this.lblDal.AutoSize = true;
-            this.lblDal.Location = new System.Drawing.Point(880, 31);
-            this.lblDal.Name = "lblDal";
-            this.lblDal.Size = new System.Drawing.Size(35, 17);
-            this.lblDal.TabIndex = 16;
-            this.lblDal.Text = "DAL";
+            this.btnUOW.Location = new System.Drawing.Point(461, 82);
+            this.btnUOW.Name = "btnUOW";
+            this.btnUOW.Size = new System.Drawing.Size(75, 39);
+            this.btnUOW.TabIndex = 40;
+            this.btnUOW.Text = "UOW";
+            this.btnUOW.UseVisualStyleBackColor = true;
+            this.btnUOW.Click += new System.EventHandler(this.btnUOW_Click);
             // 
             // FrmCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1394, 693);
-            this.Controls.Add(this.lblDal);
-            this.Controls.Add(this.cmbDalLayer);
+            this.ClientSize = new System.Drawing.Size(617, 344);
+            this.Controls.Add(this.btnUOW);
+            this.Controls.Add(this.DalLayer);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.dtgGridCustomer);
             this.Controls.Add(this.btnValidate);
+            this.Controls.Add(this.dtgGridCustomer);
             this.Controls.Add(this.txtAddress);
-            this.Controls.Add(this.lblAddress);
-            this.Controls.Add(this.txtBillDate);
-            this.Controls.Add(this.lblBillDate);
-            this.Controls.Add(this.txtBillAmount);
-            this.Controls.Add(this.lblBillAmount);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtBillingDate);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtBillingAmount);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPhoneNumber);
-            this.Controls.Add(this.lblPhoneNumber);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCustomerName);
-            this.Controls.Add(this.lblCustomerName);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbCustomerType);
-            this.Controls.Add(this.lblCustomerType);
+            this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmCustomer";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmCustomer_Load);
@@ -232,23 +250,23 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblCustomerType;
-        private System.Windows.Forms.ComboBox cmbCustomerType;
-        private System.Windows.Forms.Label lblCustomerName;
-        private System.Windows.Forms.TextBox txtCustomerName;
-        private System.Windows.Forms.Label lblPhoneNumber;
-        private System.Windows.Forms.TextBox txtPhoneNumber;
-        private System.Windows.Forms.Label lblBillAmount;
-        private System.Windows.Forms.TextBox txtBillAmount;
-        private System.Windows.Forms.Label lblBillDate;
-        private System.Windows.Forms.TextBox txtBillDate;
-        private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Button btnValidate;
         private System.Windows.Forms.DataGridView dtgGridCustomer;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtBillingDate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtBillingAmount;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCustomerName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbCustomerType;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.ComboBox cmbDalLayer;
-        private System.Windows.Forms.Label lblDal;
+        private System.Windows.Forms.ComboBox DalLayer;
+        private System.Windows.Forms.Button btnUOW;
     }
 }
 

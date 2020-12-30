@@ -2,40 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Unity;
 using InterfaceCustomer;
-using Unity.Injection;
+using AdoDotnetDAL;
+using CommonDAL;
 using InterfaceDal;
-using Unity.Resolution;
-using AdoDotNetDal;
 using EfDal;
+using Unity;
 
 namespace FactoryDal
 {
-    public static class FactoryDal<AnyType> // Design Pattern: Simple Factory pattern
+    public static class FactoryDalLayer<AnyType> // Design pattern :- Simple factory pattern
     {
-        private static IUnityContainer objectsOfOurProjects = null;
+        private static IUnityContainer ObjectsofOurProjects = null;
+
 
         public static AnyType Create(string Type)
         {
-            // Design Pattern: Lazy Loading. Opposite is Eager Loading
-            if (objectsOfOurProjects == null)
+            // Design pattern :- Lazy loading. Eager loading
+            if (ObjectsofOurProjects == null)
             {
-                objectsOfOurProjects = new UnityContainer();
-               
-                objectsOfOurProjects.RegisterType<IDal<CustomerBase>, CustomerDAL>("ADODal");
-                objectsOfOurProjects.RegisterType<IDal<CustomerBase>, EfCustomerDal>("EFDal");
+                ObjectsofOurProjects = new UnityContainer();
+
+                ObjectsofOurProjects.RegisterType<IRepository<CustomerBase>,
+                    CustomerDAL>("ADODal");
+                ObjectsofOurProjects.RegisterType<IRepository<CustomerBase>,
+                    EfDalAbstract<CustomerBase>>("EFDal");
+                ObjectsofOurProjects.RegisterType<IUow, AdoUow>("AdoUOW");
+                ObjectsofOurProjects.RegisterType<IUow, EUow>("EfUOW");
+
             }
-            // Design Pattern: RIP Replace If with Polymorphism
-            return objectsOfOurProjects.Resolve<AnyType>(Type,
-                new ResolverOverride[]
-                {
-                    new ParameterOverride("connectionString",
-                    @"Data Source=TAB112336;Initial Catalog=CustomerDB;"+
-                    "User ID=sa;Password=Dragonsaren0evil;" +
-                    "Integrated Security=True")
-                });
+            //Design pattern :-  RIP Replace If with Poly
+            return ObjectsofOurProjects.Resolve<AnyType>(Type);
         }
     }
 }

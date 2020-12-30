@@ -1,33 +1,30 @@
-﻿using InterfaceCustomer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
+using InterfaceCustomer;
 namespace MiddleLayer
-{   
+{
+
     public class Customer : CustomerBase
     {
         public Customer()
         {
             CustomerType = "Customer";
         }
-        public Customer(IValidation<ICustomer> obj) 
-            : base(obj)
+        public Customer(IValidation<ICustomer> obj) : base(obj)
         {
             CustomerType = "Customer";
         }
-    }
 
+    }
     public class Lead : CustomerBase
     {
         public Lead()
         {
             CustomerType = "Lead";
         }
-        public Lead(IValidation<ICustomer> obj) 
-            : base(obj)
+        public Lead(IValidation<ICustomer> obj) : base(obj)
         {
             CustomerType = "Lead";
         }
