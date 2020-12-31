@@ -32,11 +32,10 @@ namespace EfDal
             throw new NotImplementedException();
         }
 
-        public List<AnyType> Search()
+        public IEnumerable<AnyType> Search()
         {
             return dbcont.Set<AnyType>().
-                     AsQueryable<AnyType>().
-                         ToList<AnyType>();
+                     AsQueryable();
         }
 
 
@@ -44,6 +43,12 @@ namespace EfDal
         public void SetUnitWork(IUow uow)
         {
             dbcont = ((EUow)uow); // Global transaction UOW
+        }
+
+
+        public IEnumerable<AnyType> GetData()
+        {
+            throw new NotImplementedException();
         }
     }
 

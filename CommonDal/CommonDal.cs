@@ -9,6 +9,7 @@ namespace CommonDAL
     {
 
         protected List<AnyType> AnyTypes = new List<AnyType>();
+
         public virtual void Add(AnyType obj)
         {
             AnyTypes.Add(obj);
@@ -19,7 +20,7 @@ namespace CommonDAL
             throw new NotImplementedException();
         }
 
-        public virtual List<AnyType> Search()
+        public virtual IEnumerable<AnyType> Search()
         {
             throw new NotImplementedException();
         }
@@ -32,6 +33,12 @@ namespace CommonDAL
         public virtual void SetUnitWork(IUow uow)
         {
             throw new NotImplementedException();
+        }
+
+
+        public IEnumerable<AnyType> GetData()
+        {
+            return AnyTypes;
         }
     }
 }

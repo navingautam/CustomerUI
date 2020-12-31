@@ -27,7 +27,7 @@ namespace AdoDotnetDAL
 
         private void Open()
         {
-            if (objConn == null)
+            if ((objConn == null) || (objConn.State == ConnectionState.Closed))
             {
                 objConn = new SqlConnection(ConfigurationManager.
                         ConnectionStrings["Conn"].ConnectionString);
@@ -55,11 +55,10 @@ namespace AdoDotnetDAL
         }
         public List<AnyType> Execute() // Fixed Sequence select
         {
-            List<AnyType> objTypes = null;
             Open();
-            objTypes = ExecuteCommand();
+            AnyTypes = ExecuteCommand();
             Close();
-            return objTypes;
+            return AnyTypes;
         }
         public override void Save()
         {
@@ -68,7 +67,7 @@ namespace AdoDotnetDAL
                 Execute(o);
             }
         }
-        public override List<AnyType> Search()
+        public override IEnumerable<AnyType> Search()
         {
             return Execute();
         }
@@ -76,12 +75,17 @@ namespace AdoDotnetDAL
     public class CustomerDAL : TemplateADO<CustomerBase>, IRepository<CustomerBase>
     {
 
+        public override void Add(CustomerBase obj)
+        {
+            obj.Validate();
+            base.Add(obj);
+        }
         protected override List<CustomerBase> ExecuteCommand()
         {
             objCommand.CommandText = "select * from tblCustomer";
             SqlDataReader dr = null;
             dr = objCommand.ExecuteReader();
-            List<CustomerBase> custs = new List<CustomerBase>();
+            AnyTypes.Clear();
             while (dr.Read())
             {
                 CustomerBase icust = Factory<CustomerBase>.Create("Customer");
@@ -92,22 +96,29 @@ namespace AdoDotnetDAL
                 icust.BillAmount = Convert.ToDecimal(dr["BillAmount"]);
                 icust.PhoneNumber = dr["PhoneNumber"].ToString();
                 icust.Address = dr["Address"].ToString();
-                custs.Add(icust);
+                AnyTypes.Add(icust);
             }
-            return custs;
+            return AnyTypes;
         }
         protected override void ExecuteCommand(CustomerBase obj)
         {
-            objCommand.CommandText = "insert into tblCustomer(" +
-                                            "CustomerName," +
-                                            "BillAmount,BillDate," +
-                                            "PhoneNumber,Address,CustomerType)" +
-                                            "values('" + obj.CustomerName + "'," +
-                                            obj.BillAmount + ",'" +
-                                            obj.BillDate + "','" +
-                                            obj.PhoneNumber + "','" +
-                                            obj.Address + "','" + obj.CustomerType + "')";
-            objCommand.ExecuteNonQuery();
+            if (obj.Id == 0)
+            {
+                objCommand.CommandText = "insert into tblCustomer(" +
+                                                "CustomerName," +
+                                                "BillAmount,BillDate," +
+                                                "PhoneNumber,Address,CustomerType)" +
+                                                "values('" + obj.CustomerName + "'," +
+                                                obj.BillAmount + ",'" +
+                                                obj.BillDate + "','" +
+                                                obj.PhoneNumber + "','" +
+                                                obj.Address + "','" + obj.CustomerType + "')";
+                objCommand.ExecuteNonQuery();
+            }
+            else
+            {
+                // Update
+            }
         }
     }
 
