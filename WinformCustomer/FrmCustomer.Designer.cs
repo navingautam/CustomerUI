@@ -45,109 +45,106 @@
             this.DalLayer = new System.Windows.Forms.ComboBox();
             this.btnUOW = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgGridCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgGridCustomer
             // 
             this.dtgGridCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgGridCustomer.Location = new System.Drawing.Point(17, 131);
-            this.dtgGridCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.dtgGridCustomer.Location = new System.Drawing.Point(23, 161);
+            this.dtgGridCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgGridCustomer.Name = "dtgGridCustomer";
             this.dtgGridCustomer.RowTemplate.Height = 24;
-            this.dtgGridCustomer.Size = new System.Drawing.Size(586, 203);
+            this.dtgGridCustomer.Size = new System.Drawing.Size(781, 250);
             this.dtgGridCustomer.TabIndex = 32;
+            this.dtgGridCustomer.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgGridCustomer_RowEnter);
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(295, 67);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAddress.Location = new System.Drawing.Point(393, 82);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(153, 55);
+            this.txtAddress.Size = new System.Drawing.Size(203, 67);
             this.txtAddress.TabIndex = 27;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(232, 67);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(309, 82);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.Size = new System.Drawing.Size(60, 17);
             this.label6.TabIndex = 31;
             this.label6.Text = "Address";
             // 
             // txtBillingDate
             // 
-            this.txtBillingDate.Location = new System.Drawing.Point(295, 39);
-            this.txtBillingDate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBillingDate.Location = new System.Drawing.Point(393, 48);
+            this.txtBillingDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBillingDate.Name = "txtBillingDate";
-            this.txtBillingDate.Size = new System.Drawing.Size(110, 20);
+            this.txtBillingDate.Size = new System.Drawing.Size(145, 22);
             this.txtBillingDate.TabIndex = 25;
             this.txtBillingDate.Text = "1/1/2010";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(232, 39);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(309, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.Size = new System.Drawing.Size(60, 17);
             this.label5.TabIndex = 30;
             this.label5.Text = "Bill Date";
             // 
             // txtBillingAmount
             // 
-            this.txtBillingAmount.Location = new System.Drawing.Point(295, 11);
-            this.txtBillingAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBillingAmount.Location = new System.Drawing.Point(393, 14);
+            this.txtBillingAmount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBillingAmount.Name = "txtBillingAmount";
-            this.txtBillingAmount.Size = new System.Drawing.Size(110, 20);
+            this.txtBillingAmount.Size = new System.Drawing.Size(145, 22);
             this.txtBillingAmount.TabIndex = 22;
             this.txtBillingAmount.Text = "0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(232, 11);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(309, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.Size = new System.Drawing.Size(78, 17);
             this.label4.TabIndex = 28;
             this.label4.Text = "Bill Amount";
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(110, 67);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(147, 82);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(110, 20);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(145, 22);
             this.txtPhoneNumber.TabIndex = 26;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 67);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(19, 82);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.Size = new System.Drawing.Size(101, 17);
             this.label3.TabIndex = 24;
             this.label3.Text = "Phone number";
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(110, 39);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCustomerName.Location = new System.Drawing.Point(147, 48);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(110, 20);
+            this.txtCustomerName.Size = new System.Drawing.Size(145, 22);
             this.txtCustomerName.TabIndex = 23;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 39);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(19, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(109, 17);
             this.label2.TabIndex = 21;
             this.label2.Text = "Customer Name";
             // 
@@ -159,49 +156,49 @@
             "Customer",
             "SelfService",
             "HomeDelivery"});
-            this.cmbCustomerType.Location = new System.Drawing.Point(110, 9);
-            this.cmbCustomerType.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbCustomerType.Location = new System.Drawing.Point(147, 11);
+            this.cmbCustomerType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbCustomerType.Name = "cmbCustomerType";
-            this.cmbCustomerType.Size = new System.Drawing.Size(110, 21);
+            this.cmbCustomerType.Size = new System.Drawing.Size(145, 24);
             this.cmbCustomerType.TabIndex = 20;
             this.cmbCustomerType.SelectedIndexChanged += new System.EventHandler(this.cmbCustomerType_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(19, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(104, 17);
             this.label1.TabIndex = 19;
             this.label1.Text = "Customer Type";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(20, 99);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Location = new System.Drawing.Point(27, 122);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(88, 28);
+            this.btnAdd.Size = new System.Drawing.Size(117, 34);
             this.btnAdd.TabIndex = 38;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Add/Update";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // DalLayer
             // 
             this.DalLayer.FormattingEnabled = true;
-            this.DalLayer.Location = new System.Drawing.Point(426, 11);
-            this.DalLayer.Margin = new System.Windows.Forms.Padding(2);
+            this.DalLayer.Location = new System.Drawing.Point(568, 14);
+            this.DalLayer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DalLayer.Name = "DalLayer";
-            this.DalLayer.Size = new System.Drawing.Size(110, 21);
+            this.DalLayer.Size = new System.Drawing.Size(145, 24);
             this.DalLayer.TabIndex = 39;
             this.DalLayer.SelectedIndexChanged += new System.EventHandler(this.DalLayer_SelectedIndexChanged);
             // 
             // btnUOW
             // 
-            this.btnUOW.Location = new System.Drawing.Point(461, 82);
+            this.btnUOW.Location = new System.Drawing.Point(615, 101);
+            this.btnUOW.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUOW.Name = "btnUOW";
-            this.btnUOW.Size = new System.Drawing.Size(75, 39);
+            this.btnUOW.Size = new System.Drawing.Size(100, 48);
             this.btnUOW.TabIndex = 40;
             this.btnUOW.Text = "UOW";
             this.btnUOW.UseVisualStyleBackColor = true;
@@ -209,19 +206,31 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(114, 98);
+            this.btnSave.Location = new System.Drawing.Point(152, 121);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 29);
+            this.btnSave.Size = new System.Drawing.Size(100, 36);
             this.btnSave.TabIndex = 41;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(272, 122);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 35);
+            this.btnCancel.TabIndex = 42;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // FrmCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 344);
+            this.ClientSize = new System.Drawing.Size(823, 423);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnUOW);
             this.Controls.Add(this.DalLayer);
@@ -239,7 +248,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbCustomerType);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmCustomer";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmCustomer_Load);
@@ -268,6 +277,7 @@
         private System.Windows.Forms.ComboBox DalLayer;
         private System.Windows.Forms.Button btnUOW;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
 

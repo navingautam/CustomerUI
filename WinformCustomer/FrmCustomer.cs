@@ -151,6 +151,27 @@ namespace WinformCustomer
 
         }
 
+        private void dtgGridCustomer_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            cust = Idal.GetData(e.RowIndex);
+            cust.Clone();
+            LoadCustomerOnUI();
+        }
+        private void LoadCustomerOnUI()
+        {
+            txtCustomerName.Text = cust.CustomerName;
+            txtPhoneNumber.Text = cust.PhoneNumber;
+            txtBillingDate.Text = cust.BillDate.ToString();
+            txtBillingAmount.Text = cust.BillAmount.ToString();
+            txtAddress.Text = cust.Address;
+            cmbCustomerType.Text = cust.CustomerType;
+        }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            cust.Revert();
+            ClearCustomer();
+            LoadGridInMemory();
+        }
     }
 }

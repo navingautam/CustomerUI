@@ -14,6 +14,7 @@ namespace InterfaceDal
         // Design pattern :- Iterator
         IEnumerable<AnyType> Search();
         IEnumerable<AnyType> GetData();
+        AnyType GetData(int Index);
         void Save(); // Physical committ
     }
     // Design pattern :- Unit of Work pattern
