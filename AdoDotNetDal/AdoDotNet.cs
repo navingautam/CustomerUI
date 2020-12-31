@@ -110,7 +110,7 @@ namespace AdoDotnetDAL
                                                 "PhoneNumber,Address,CustomerType)" +
                                                 "values('" + obj.CustomerName + "'," +
                                                 obj.BillAmount + ",'" +
-                                                obj.BillDate + "','" +
+                                                obj.BillDate.ToString("yyyy-MM-dd HH:mm:ss") + "','" +
                                                 obj.PhoneNumber + "','" +
                                                 obj.Address + "','" + obj.CustomerType + "')";
                 objCommand.ExecuteNonQuery();

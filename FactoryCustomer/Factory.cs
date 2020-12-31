@@ -72,16 +72,17 @@ namespace FactoryCustomer
         }
         public override IDiscount CreateDiscount()
         {
-            return null;
+            return new DiscountNull();
         }
         public override IExtraCharge CreateExtra()
         {
-            return null;
+            return new ExtraChargeNull();
         }
         public override IValidation<ICustomer> CreateValidation()
         {
-            return new PhoneValidation(
-                        new CustomerBasicValidation()); ;
+            return new CustomeBillAmountZeroValidation(
+                new PhoneValidation(
+                    new CustomerBasicValidation()));
         }
     }
 
