@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryDal", "FactoryDal\Fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfDal", "EfDal\EfDal.csproj", "{DB9C6E3D-2DEA-4C61-A889-1CB8D0568E82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount", "Discount\Discount.csproj", "{EDC44BC9-1754-438F-A164-D20E67EBA8EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraCharge", "ExtraCharge\ExtraCharge.csproj", "{0729F734-8904-4AC6-99B2-87F91558D797}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{DB9C6E3D-2DEA-4C61-A889-1CB8D0568E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB9C6E3D-2DEA-4C61-A889-1CB8D0568E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB9C6E3D-2DEA-4C61-A889-1CB8D0568E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC44BC9-1754-438F-A164-D20E67EBA8EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC44BC9-1754-438F-A164-D20E67EBA8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC44BC9-1754-438F-A164-D20E67EBA8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC44BC9-1754-438F-A164-D20E67EBA8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0729F734-8904-4AC6-99B2-87F91558D797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0729F734-8904-4AC6-99B2-87F91558D797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0729F734-8904-4AC6-99B2-87F91558D797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0729F734-8904-4AC6-99B2-87F91558D797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,17 +17,22 @@ namespace InterfaceCustomer
         void Validate();
         void Clone(); // Create a copy of the object
         void Revert(); // Revert back to the old copy
+        decimal ActualCost(); // ActualCost = (BillAmount - Discount) + Extracharge
     }
     public class CustomerBase : ICustomer
     {
         private IValidation<ICustomer> validation = null;
-
+        private IDiscount discount = null;
+        private IExtraCharge extracharge = null;
         // Design pattern :- memento pattern ( Revert old state)
         private ICustomer _OldCopy = null;
 
-        public CustomerBase(IValidation<ICustomer> obj)
+        public CustomerBase(IValidation<ICustomer> obj,
+                            IDiscount dis, IExtraCharge extra)
         {
             validation = obj;
+            discount = dis;
+            extracharge = extra;
         }
         [Key]
         public int Id { get; set; }
@@ -72,11 +77,24 @@ namespace InterfaceCustomer
         }
 
 
+        public decimal ActualCost()
+        {
+            return (BillAmount - discount.Calculate(this))
+                    + extracharge.Calculate(this);
+        }
     }
     // Design pattern :- Stratergy pattern helps to choose 
     // algorithms dynamically
     public interface IValidation<AnyType>
     {
         void Validate(AnyType obj);
+    }
+    public interface IDiscount
+    {
+        decimal Calculate(ICustomer obj);
+    }
+    public interface IExtraCharge
+    {
+        decimal Calculate(ICustomer obj);
     }
 }
