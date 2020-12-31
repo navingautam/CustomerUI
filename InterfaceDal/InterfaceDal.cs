@@ -11,7 +11,9 @@ namespace InterfaceDal
         void SetUnitWork(IUow uow);
         void Add(AnyType obj); // Inmemory addition
         void Update(AnyType obj);  // Inmemory updation
-        List<AnyType> Search();
+        // Design pattern :- Iterator
+        IEnumerable<AnyType> Search();
+        IEnumerable<AnyType> GetData();
         void Save(); // Physical committ
     }
     // Design pattern :- Unit of Work pattern
