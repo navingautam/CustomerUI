@@ -59,7 +59,6 @@
             this.dtgGridCustomer.RowTemplate.Height = 24;
             this.dtgGridCustomer.Size = new System.Drawing.Size(586, 203);
             this.dtgGridCustomer.TabIndex = 32;
-            this.dtgGridCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgGridCustomer_CellContentClick);
             this.dtgGridCustomer.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgGridCustomer_RowEnter);
             // 
             // txtAddress
@@ -168,7 +167,8 @@
             this.cmbCustomerType.Name = "cmbCustomerType";
             this.cmbCustomerType.Size = new System.Drawing.Size(110, 21);
             this.cmbCustomerType.TabIndex = 20;
-            this.cmbCustomerType.SelectedIndexChanged += new System.EventHandler(this.cmbCustomerType_SelectedIndexChanged);
+
+            this.cmbCustomerType.SelectionChangeCommitted += new System.EventHandler(this.cmbCustomerType_SelectionChangeCommitted);
             // 
             // label1
             // 
