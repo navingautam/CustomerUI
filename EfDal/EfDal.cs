@@ -50,6 +50,10 @@ namespace EfDal
         {
             throw new NotImplementedException();
         }
+        public AnyType GetData(int Index)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

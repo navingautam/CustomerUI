@@ -12,6 +12,13 @@ namespace CommonDAL
 
         public virtual void Add(AnyType obj)
         {
+            foreach (AnyType temp in AnyTypes)
+            {
+                if(obj.Equals(temp))
+                {
+                    return;
+                }
+            }
             AnyTypes.Add(obj);
         }
 
@@ -39,6 +46,11 @@ namespace CommonDAL
         public IEnumerable<AnyType> GetData()
         {
             return AnyTypes;
+        }
+
+        public AnyType GetData(int Index)
+        {
+            return AnyTypes[Index];
         }
     }
 }
