@@ -88,7 +88,7 @@ namespace AdoDotnetDAL
             AnyTypes.Clear();
             while (dr.Read())
             {
-                CustomerBase icust = Factory<CustomerBase>.Create("Customer");
+                CustomerBase icust = FactoryCustomerLookup.Create("Customer");
                 icust.Id = Convert.ToInt16(dr["Id"]);
                 icust.CustomerType = dr["CustomerType"].ToString();
                 icust.CustomerName = dr["CustomerName"].ToString();

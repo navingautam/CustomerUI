@@ -14,7 +14,7 @@ namespace CommonDAL
         {
             foreach (AnyType temp in AnyTypes)
             {
-                if(obj.Equals(temp))
+                if (obj.Equals(temp))
                 {
                     return;
                 }
@@ -48,9 +48,16 @@ namespace CommonDAL
             return AnyTypes;
         }
 
-        public AnyType GetData(int Index)
+
+        public virtual AnyType GetData(int Index)
         {
             return AnyTypes[Index];
+        }
+
+
+        public virtual void Cancel(int Index)
+        {
+            throw new NotImplementedException();
         }
     }
 }

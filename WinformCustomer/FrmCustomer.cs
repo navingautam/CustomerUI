@@ -49,7 +49,7 @@ namespace WinformCustomer
         }
         private void cmbCustomerType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cust = Factory<CustomerBase>.Create(cmbCustomerType.Text);
+            ClearCustomer();
         }
         private void SetCustomer()
         {
@@ -76,20 +76,13 @@ namespace WinformCustomer
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SetCustomer();
+            SetCustomer();
 
-                Idal.Add(cust); // In memory + validate
+            Idal.Add(cust); // In memory + validate
 
-                LoadGridInMemory();
-                ClearCustomer();
-            }
-            catch (Exception ex)
-            {
+            LoadGridInMemory();
+            ClearCustomer();
 
-                MessageBox.Show(ex.Message.ToString());
-            }
         }
         private void ClearCustomer()
         {
@@ -98,6 +91,7 @@ namespace WinformCustomer
             txtBillingDate.Text = DateTime.Now.Date.ToString();
             txtBillingAmount.Text = "";
             txtAddress.Text = "";
+            cust = FactoryCustomerLookup.Create(cmbCustomerType.Text);
         }
         private void DalLayer_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -155,9 +149,9 @@ namespace WinformCustomer
         {
             cust = Idal.GetData(e.RowIndex);
             cust.Clone();
-            LoadCustomerOnUI();
+            LoadCustomeronUI();
         }
-        private void LoadCustomerOnUI()
+        private void LoadCustomeronUI()
         {
             txtCustomerName.Text = cust.CustomerName;
             txtPhoneNumber.Text = cust.PhoneNumber;
@@ -167,11 +161,32 @@ namespace WinformCustomer
             cmbCustomerType.Text = cust.CustomerType;
         }
 
+        private void dtgGridCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cust.Revert();
             ClearCustomer();
             LoadGridInMemory();
         }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SetCustomer();
+                cust.Validate();
+                MessageBox.Show(cust.ActualCost().ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+
     }
 }
