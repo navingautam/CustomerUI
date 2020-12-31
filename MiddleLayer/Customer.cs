@@ -8,11 +8,20 @@ namespace MiddleLayer
 
     public class Customer : CustomerBase
     {
-        public Customer(IValidation<ICustomer> obj, string _custType) : base(obj)
+
+        public Customer(IValidation<ICustomer> obj,
+                            IDiscount dis,
+                            IExtraCharge extra,
+                            string _CustType) : base(obj, dis, extra)
         {
-            CustomerType = _custType;
+            CustomerType = _CustType;
+            CustomerName = "";
+            PhoneNumber = "";
+            BillAmount = 0;
+            BillDate = DateTime.Now;
+            Address = "";
         }
 
     }
-    
+
 }
