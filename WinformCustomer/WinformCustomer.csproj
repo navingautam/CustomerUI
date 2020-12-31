@@ -109,6 +109,10 @@
       <Project>{91a9b81e-4d74-4a35-87bc-d19c24f0bc80}</Project>
       <Name>InterfaceDal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mediator\Mediator.csproj">
+      <Project>{8b4b9b56-442a-4eff-99d7-c78cbcfeadc4}</Project>
+      <Name>Mediator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

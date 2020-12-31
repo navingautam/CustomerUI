@@ -80,4 +80,20 @@ namespace ValidationAlgorithms
             }
         }
     }
+    public class CustomeBillAmountZeroValidation : ValidationLinker
+    {
+        public CustomeBillAmountZeroValidation(IValidation<ICustomer> custValidate)
+            : base(custValidate)
+        {
+
+        }
+        public override void Validate(ICustomer obj)
+        {
+            base.Validate(obj);
+            if (obj.BillAmount != 0)
+            {
+                throw new Exception("This is not appropriate");
+            }
+        }
+    }
 }

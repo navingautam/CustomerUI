@@ -10,62 +10,42 @@ using InterfaceCustomer;
 using FactoryCustomer;
 using InterfaceDal;
 using FactoryDal;
+using Mediator;
+
 namespace WinformCustomer
 {
     public partial class FrmCustomer : Form
     {
+        // Design pattern :- Mediator Pattern
+        private UICustomerMediator customerMediator = new UICustomerMediator();
         private CustomerBase cust = null;
         private IRepository<CustomerBase> Idal;
         public FrmCustomer()
         {
             InitializeComponent();
+            customerMediator.Register(cust);
+            customerMediator.Register(Idal);
+            customerMediator.Register(dtgGridCustomer);
+            foreach (TextBox t in this.Controls.OfType<TextBox>())
+            {
+                customerMediator.Register(t);
+            }
+            foreach (ComboBox t in this.Controls.OfType<ComboBox>())
+            {
+                customerMediator.Register(t);
+            }
+
         }
 
         private void FrmCustomer_Load(object sender, EventArgs e)
         {
-            DalLayer.Items.Add("ADODal");
-            DalLayer.Items.Add("EFDal");
-            DalLayer.SelectedIndex = 0;
-            Idal = FactoryDalLayer<IRepository<CustomerBase>>.Create(DalLayer.Text);
-            LoadGrid();
-        }
-        private void LoadGridInMemory()
-        {
-            dtgGridCustomer.DataSource = null;
-
-            IEnumerable<CustomerBase> custs = Idal.GetData(); //inmemory
-
-            dtgGridCustomer.DataSource = custs;
-
-        }
-        private void LoadGrid()
-        {
-
-            dtgGridCustomer.DataSource = null;
-            IEnumerable<CustomerBase> custs = Idal.Search(); // physically
-
-            dtgGridCustomer.DataSource = custs;
-
-        }
-        private void cmbCustomerType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ClearCustomer();
-        }
-        private void SetCustomer()
-        {
-
-            cust.CustomerName = txtCustomerName.Text;
-            cust.PhoneNumber = txtPhoneNumber.Text;
-            cust.BillDate = Convert.ToDateTime(txtBillingDate.Text);
-            cust.BillAmount = Convert.ToDecimal(txtBillingAmount.Text);
-            cust.Address = txtAddress.Text;
+            customerMediator.Load();
         }
         private void btnValidate_Click(object sender, EventArgs e)
         {
             try
             {
-                SetCustomer();
-                cust.Validate();
+                customerMediator.Validate();
             }
             catch (Exception ex)
             {
@@ -73,120 +53,67 @@ namespace WinformCustomer
             }
 
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            SetCustomer();
-
-            Idal.Add(cust); // In memory + validate
-
-            LoadGridInMemory();
-            ClearCustomer();
-
+            try
+            {
+                customerMediator.Add();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-        private void ClearCustomer()
-        {
-            txtCustomerName.Text = "";
-            txtPhoneNumber.Text = "";
-            txtBillingDate.Text = DateTime.Now.Date.ToString();
-            txtBillingAmount.Text = "";
-            txtAddress.Text = "";
-            cust = FactoryCustomerLookup.Create(cmbCustomerType.Text);
-        }
+
         private void DalLayer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Idal = FactoryDalLayer<IRepository<CustomerBase>>.Create(DalLayer.Text);
-            LoadGrid();
+            customerMediator.DalLayerChange();
+
         }
 
         private void btnUOW_Click(object sender, EventArgs e)
         {
-            IUow uow = FactoryDalLayer<IUow>.Create("EfUOW");
-            try
-            {
-                CustomerBase cust1 = new CustomerBase();
-                cust1.CustomerType = "Lead";
-                cust1.CustomerName = "Cust1";
-
-                // Unit of work
-
-                Idal.SetUnitWork(uow);
-                Idal.Add(cust1); // In memory
-
-
-                cust1 = new CustomerBase();
-                cust1.CustomerType = "Lead";
-                cust1.CustomerName = "Cust2";
-                cust1.Address = "dzxcczxcxzcxzcsdhksjahdkjsahkdjhsakjdh kjashdkjahsd kjahskjdh kajsdhasd";
-                IRepository<CustomerBase> dal1 = FactoryDalLayer<IRepository<CustomerBase>>
-                                     .Create(DalLayer.Text); // Unit
-                dal1.SetUnitWork(uow);
-                dal1.Add(cust1); // In memory
-
-                uow.Committ();
-            }
-            catch (Exception ex)
-            {
-                uow.RollBack();
-                MessageBox.Show(ex.Message.ToString());
-            }
+            customerMediator.Uow();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Idal.Save();
-            ClearCustomer();
-            LoadGrid();
+            customerMediator.Save();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            IEnumerable<CustomerBase> custs = Idal.GetData(); // physically
-
+            customerMediator.Click();
         }
 
         private void dtgGridCustomer_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            cust = Idal.GetData(e.RowIndex);
-            cust.Clone();
-            LoadCustomeronUI();
+            customerMediator.RowEnter(e.RowIndex);
         }
         private void LoadCustomeronUI()
         {
-            txtCustomerName.Text = cust.CustomerName;
-            txtPhoneNumber.Text = cust.PhoneNumber;
-            txtBillingDate.Text = cust.BillDate.ToString();
-            txtBillingAmount.Text = cust.BillAmount.ToString();
-            txtAddress.Text = cust.Address;
-            cmbCustomerType.Text = cust.CustomerType;
+            customerMediator.ObjecttoUI();
         }
 
-        private void dtgGridCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            cust.Revert();
-            ClearCustomer();
-            LoadGridInMemory();
+            customerMediator.Cancel();
+
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SetCustomer();
-                cust.Validate();
-                MessageBox.Show(cust.ActualCost().ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
+            customerMediator.Check();
+        }
+
+        private void cmbCustomerType_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            customerMediator.ClearCustomer();
         }
 
 
     }
+
 }

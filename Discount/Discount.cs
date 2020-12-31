@@ -40,4 +40,18 @@ namespace Discount
 
         }
     }
+    public class DiscountNull : IDiscount
+    {
+        public decimal Calculate(ICustomer obj)
+        {
+            return 0;
+        }
+    }
+    public class ExtraChargeNull : IExtraCharge
+    {
+        public decimal Calculate(ICustomer obj)
+        {
+            return 0;
+        }
+    }
 }
